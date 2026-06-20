@@ -33,7 +33,7 @@ export default function Login() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 p-4">
-            <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 border border-slate-100 dark:border-slate-800">
+            <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-6 md:p-8 border border-slate-100 dark:border-slate-800">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-slate-800 dark:text-white">
                         {isLogin ? 'Welcome Back' : 'Create Account'}

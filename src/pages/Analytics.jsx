@@ -26,7 +26,7 @@ export default function Analytics() {
 
             <Card>
                 <h3 className="text-lg font-bold mb-6 text-slate-800 dark:text-white">Daily Spending Trend</h3>
-                <div className="h-[400px] w-full">
+                <div className="h-[300px] md:h-[400px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={dailyData}>
                             <CartesianGrid strokeDasharray="3 3" vertical={false} />
