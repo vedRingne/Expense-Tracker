@@ -82,10 +82,15 @@ export default function Transactions() {
                         <div key={expense.id} className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 flex justify-between items-center shadow-sm">
                             <div className="space-y-1.5 flex-1 pr-4">
                                 <p className="font-semibold text-slate-900 dark:text-white leading-tight">{expense.description}</p>
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-2 mt-1 flex-wrap">
                                     <span className="capitalize px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-semibold text-slate-600 dark:text-slate-400">
                                         {expense.category}
                                     </span>
+                                    {expense.paymentMode && (
+                                        <span className="capitalize px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded text-[10px] font-semibold">
+                                            {expense.paymentMode}
+                                        </span>
+                                    )}
                                     <span className="text-[11px] text-slate-400">{expense.date}</span>
                                 </div>
                             </div>
@@ -111,6 +116,7 @@ export default function Transactions() {
                             <tr>
                                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Description</th>
                                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Category</th>
+                                <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Payment Mode</th>
                                 <th className="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Date</th>
                                 <th className="px-6 py-4 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider">Amount</th>
                                 <th className="px-6 py-4 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
@@ -119,7 +125,7 @@ export default function Transactions() {
                         <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                             {filteredExpenses.length === 0 ? (
                                 <tr>
-                                    <td colSpan="5" className="px-6 py-8 text-center text-slate-500">
+                                    <td colSpan="6" className="px-6 py-8 text-center text-slate-500">
                                         No transactions found.
                                     </td>
                                 </tr>
@@ -133,6 +139,15 @@ export default function Transactions() {
                                             <span className="capitalize px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs font-medium">
                                                 {expense.category}
                                             </span>
+                                        </td>
+                                        <td className="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">
+                                            {expense.paymentMode ? (
+                                                <span className="capitalize px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded text-xs font-medium">
+                                                    {expense.paymentMode}
+                                                </span>
+                                            ) : (
+                                                <span className="text-slate-400">-</span>
+                                            )}
                                         </td>
                                         <td className="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">
                                             {expense.date}

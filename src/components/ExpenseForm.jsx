@@ -7,8 +7,16 @@ export default function ExpenseForm({ onClose }) {
         description: '',
         amount: '',
         category: 'food',
+        paymentMode: 'cash',
         date: new Date().toISOString().split('T')[0]
     });
+
+    const paymentModes = [
+        { value: "cash", label: "💵 Cash" },
+        { value: "card", label: "💳 Card" },
+        { value: "upi", label: "📱 UPI" },
+        { value: "bank", label: "🏦 Bank Transfer" },
+    ];
 
     const categories = [
         { value: "food", label: "🍔 Food" },
@@ -70,14 +78,29 @@ export default function ExpenseForm({ onClose }) {
                     </select>
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Date</label>
-                    <input
-                        type="date"
-                        value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Payment Mode</label>
+                    <select
+                        value={formData.paymentMode}
+                        onChange={(e) => setFormData({ ...formData, paymentMode: e.target.value })}
                         className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
-                    />
+                    >
+                        {paymentModes.map((mode) => (
+                            <option key={mode.value} value={mode.value}>
+                                {mode.label}
+                            </option>
+                        ))}
+                    </select>
                 </div>
+            </div>
+
+            <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Date</label>
+                <input
+                    type="date"
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
+                />
             </div>
 
             <button
